@@ -1,4 +1,6 @@
+using Address_Book_API.Domain.Interfaces;
 using Address_Book_API.Domain.Models;
+using Address_Book_API.Domain.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -29,13 +31,13 @@ namespace Address_Book_API
         {
             services.Configure<MongoDbSettings>(Configuration.GetSection(nameof(MongoDbSettings)));
             services.AddSwaggerGen();
-            services.AddSingleton<IMongoDbSettings>(x => x.GetRequiredService<IOptions<MongoDbSettings>>().Value);
+            services.AddSingleton<IMongoDbSettings>(x => x.GetRequiredService<IOptions<MongoDbSettings>>().Value);          
             services.AddSingleton<IMongoClient, MongoClient>(x =>
              {
                  var settings = x.GetRequiredService<IMongoDbSettings>();
                  return new MongoClient(settings.ConnectionString);
              });
-           
+            services.AddSingleton<IContactRepository, ContactRepository>();
             services.AddControllers();
         }
 

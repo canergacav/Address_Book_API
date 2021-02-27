@@ -12,9 +12,5 @@
     <ProjectReference Include="..\Address_Book_API.Domain\Address_Book_API.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 
 </Project>
