@@ -14,6 +14,7 @@ namespace Address_Book_API.Domain.Models
         [Required]
         public string Phone { get; set; }
         public string MobilePhone { get; set; }
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
     }
 }

@@ -118,6 +118,7 @@ namespace Address_Book_API.Domain.Services
             contact.Phone = input.Phone;
             contact.Email = input.Email;
             contact.Address = input.Address;
+            contact.Updated = DateTime.Now;
             contact = await _contactRepo.UpdateAsync(Id,contact);
 
             return new APIResponse<Contact>() { Code = "200", Data = contact, Message = "Success", OK = true };
