@@ -1,6 +1,7 @@
 using Address_Book_API.Domain.Interfaces;
 using Address_Book_API.Domain.Models;
 using Address_Book_API.Domain.Repository;
+using Address_Book_API.Domain.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -38,6 +39,7 @@ namespace Address_Book_API
                  return new MongoClient(settings.ConnectionString);
              });
             services.AddSingleton<IContactRepository, ContactRepository>();
+            services.AddSingleton<IContactService, ContactService>();
             services.AddControllers();
         }
 
